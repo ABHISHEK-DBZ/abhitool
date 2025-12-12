@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FileForge - Debug Test</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="https://unpkg.com/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-spinner"></div>
+        <p id="loading-text">Processing...</p>
+    </div>
+
+    <header class="header">
+        <div class="container">
+            <div class="logo">FileForge - Debug</div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-title">Testing Tool Loading</h1>
+            <p class="hero-subtitle">Check console for errors (Press F12)</p>
+        </div>
+    </section>
+
+    <main class="main-content">
+        <div class="container">
+            <h3>Tool Containers:</h3>
+            <div id="qr-tools" style="border: 2px solid red; padding: 10px; margin: 10px 0;">
+                <p>QR Tools Container (should be filled by JavaScript)</p>
+            </div>
+            <div id="image-crop" style="border: 2px solid blue; padding: 10px; margin: 10px 0;">
+                <p>Image Crop Container (should be filled by JavaScript)</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Core utilities -->
+    <script src="app.js"></script>
+
+    <!-- Test just 2 tools -->
+    <script>
+        console.log('=== DEBUG START ===');
+        console.log('1. Page loaded');
+        console.log('2. QR container exists?', document.getElementById('qr-tools') !== null);
+        console.log('3. Crop container exists?', document.getElementById('image-crop') !== null);
+    </script>
+
+    <script src="js/tools/qr-tools.js"></script>
+    <script src="js/image/image-crop.js"></script>
+
+    <script>
+        console.log('4. Scripts loaded');
+        console.log('5. QR container content:', document.getElementById('qr-tools').innerHTML.substring(0, 100));
+        console.log('6. Crop container content:', document.getElementById('image-crop').innerHTML.substring(0, 100));
+        console.log('=== DEBUG END ===');
+
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    </script>
+</body>
+
+</html>

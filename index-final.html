@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FileForge - 29+ Professional File Tools</title>
+    <meta name="description"
+        content="Complete file manipulation toolkit with 29+ tools for PDF, images, QR codes, and more. 100% free, client-side processing.">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Core Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/docx/7.8.2/docx.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="https://unpkg.com/tesseract.js@4.1.1/dist/tesseract.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://unpkg.com/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-spinner"></div>
+        <p id="loading-text">Processing...</p>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                </svg>
+                FileForge
+            </div>
+            <nav class="nav">
+                <a href="#tools" class="nav-link">Tools</a>
+                <a href="#" class="nav-link">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Professional File Manipulation Suite</h1>
+                <p class="hero-subtitle">29+ powerful tools for PDF, images, QR codes, and more. 100% free, secure, and
+                    works entirely in your browser.</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">29+</div>
+                        <div class="stat-label">Tools</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Privacy</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">Free</div>
+                        <div class="stat-label">Forever</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content" id="tools">
+        <div class="container">
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="pdf-tools-tab">PDF Tools</button>
+                <button class="tab-btn" data-tab="image-tools-tab">Image Tools</button>
+                <button class="tab-btn" data-tab="converters-tab">Converters</button>
+                <button class="tab-btn" data-tab="utilities-tab">Utilities</button>
+            </div>
+
+            <!-- PDF Tools Tab -->
+            <div class="tab-content active" id="pdf-tools-tab">
+                <div class="tool-card" id="pdf-tools"></div>
+                <div class="tool-card" id="pdf-page-ops"></div>
+                <div class="tool-card" id="pdf-page-numbers"></div>
+                <div class="tool-card" id="pdf-editor"></div>
+                <div class="tool-card" id="pdf-security"></div>
+                <div class="tool-card" id="pdf-signature"></div>
+                <div class="tool-card" id="pdf-form-filling"></div>
+                <div class="tool-card" id="pdf-annotations"></div>
+                <div class="tool-card" id="pdf-summary"></div>
+            </div>
+
+            <!-- Image Tools Tab -->
+            <div class="tab-content" id="image-tools-tab">
+                <div class="tool-card" id="image-resize"></div>
+                <div class="tool-card" id="image-filters"></div>
+                <div class="tool-card" id="image-crop"></div>
+                <div class="tool-card" id="image-compression"></div>
+                <div class="tool-card" id="background-removal"></div>
+            </div>
+
+            <!-- Converters Tab -->
+            <div class="tab-content" id="converters-tab">
+                <div class="tool-card" id="image-to-pdf"></div>
+                <div class="tool-card" id="image-to-doc"></div>
+                <div class="tool-card" id="pdf-to-image"></div>
+                <div class="tool-card" id="html-to-pdf"></div>
+                <div class="tool-card" id="markdown-to-pdf"></div>
+                <div class="tool-card" id="file-converter"></div>
+            </div>
+
+            <!-- Utilities Tab -->
+            <div class="tab-content" id="utilities-tab">
+                <div class="tool-card" id="ocr-tool"></div>
+                <div class="tool-card" id="qr-tools"></div>
+                <div class="tool-card" id="archive-tools"></div>
+                <div class="tool-card" id="document-scanner"></div>
+                <div class="tool-card" id="video-converter"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>FileForge</h4>
+                    <p>Professional file manipulation suite with 29+ tools. All processing happens in your browser.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Features</h4>
+                    <ul>
+                        <li>100% Client-Side Processing</li>
+                        <li>No File Upload Required</li>
+                        <li>Completely Free</li>
+                        <li>Privacy Focused</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 FileForge. All rights reserved. Built with ❤️ for privacy.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Core Scripts -->
+    <script src="app.js"></script>
+
+    <!-- PDF Tools -->
+    <script src="pdf-tools.js"></script>
+    <script src="pdf-summary.js"></script>
+    <script src="pdf-editor.js"></script>
+    <script src="js/pdf/pdf-page-ops.js"></script>
+    <script src="js/pdf/pdf-page-numbers.js"></script>
+    <script src="js/pdf/pdf-security.js"></script>
+    <script src="js/pdf/pdf-signature.js"></script>
+    <script src="js/pdf/pdf-form-filling.js"></script>
+    <script src="js/pdf/pdf-annotations.js"></script>
+
+    <!-- Image Tools -->
+    <script src="image-resize.js"></script>
+    <script src="image-filters.js"></script>
+    <script src="js/image/image-crop.js"></script>
+    <script src="js/image/image-compress.js"></script>
+    <script src="js/image/background-remove.js"></script>
+
+    <!-- Converters -->
+    <script src="image-to-pdf.js"></script>
+    <script src="image-to-doc.js"></script>
+    <script src="file-converter.js"></script>
+    <script src="js/converters/pdf-to-image.js"></script>
+    <script src="js/converters/html-to-pdf.js"></script>
+    <script src="js/converters/markdown-to-pdf.js"></script>
+
+    <!-- Utilities -->
+    <script src="ocr-tool.js"></script>
+    <script src="archive-tools.js"></script>
+    <script src="video-converter.js"></script>
+    <script src="js/tools/qr-tools.js"></script>
+    <script src="js/tools/document-scanner.js"></script>
+
+    <!-- Batch Processing -->
+    <script src="js/core/batch-processor.js"></script>
+
+    <script>
+        // PDF.js worker configuration
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+        // Tab switching
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetTab = btn.dataset.tab;
+
+                // Update buttons
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Update content
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                document.getElementById(targetTab).classList.add('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

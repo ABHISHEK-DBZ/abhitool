@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Tools - FileForge</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- QRCode Libraries - Using CDN that works -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-spinner"></div>
+        <p id="loading-text">Processing...</p>
+    </div>
+
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                </svg>
+                FileForge
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <a href="index.html"
+                style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-primary); text-decoration: none; margin-bottom: 2rem;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+                Back to Tools
+            </a>
+
+            <!-- QR Tools Container -->
+            <div id="qr-tools"></div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 FileForge</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+
+    <!-- Wait for libraries to load before loading tool -->
+    <script>
+        // Check if QRCode library loaded
+        if (typeof QRCode !== 'undefined') {
+            console.log('✅ QRCode library ready!');
+            loadQRTool();
+        } else {
+            // Wait a bit and try again
+            setTimeout(() => {
+                if (typeof QRCode !== 'undefined') {
+                    console.log('✅ QRCode library ready (delayed)!');
+                    loadQRTool();
+                } else {
+                    console.error('❌ QRCode library failed to load');
+                    document.getElementById('qr-tools').innerHTML = `
+                        <div style="text-align: center; padding: 4rem 0;">
+                            <h2>Library Loading Error</h2>
+                            <p>QRCode library failed to load. Please refresh the page.</p>
+                        </div>
+                    `;
+                }
+            }, 1000);
+        }
+
+        function loadQRTool() {
+            const script = document.createElement('script');
+            script.src = 'js/tools/qr-tools.js';
+            script.onload = () => console.log('✅ QR Tools loaded');
+            document.body.appendChild(script);
+        }
+    </script>
+</body>
+
+</html>

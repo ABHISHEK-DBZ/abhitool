@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Free online file converter - Convert images to PDF/DOC, resize images, merge PDFs, and get AI-powered PDF summaries. Fast, secure, and easy to use.">
+    <meta name="keywords" content="file converter, image to pdf, pdf tools, image resize, ai pdf summary">
+    <title>FileForge - Professional File Conversion & PDF Tools</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/docx/7.8.2/docx.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="40" height="40" rx="8" fill="url(#logo-gradient)" />
+                    <path d="M12 14L20 10L28 14V26L20 30L12 26V14Z" stroke="white" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M20 10V30M12 14L28 26M28 14L12 26" stroke="white" stroke-width="1.5"
+                        stroke-linecap="round" />
+                    <defs>
+                        <linearGradient id="logo-gradient" x1="0" y1="0" x2="40" y2="40">
+                            <stop offset="0%" stop-color="#8B5CF6" />
+                            <stop offset="100%" stop-color="#EC4899" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <h1>FileForge</h1>
+            </div>
+            <nav class="nav">
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#about" class="nav-link">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2 class="hero-title">Transform Your Files with AI-Powered Tools</h2>
+                <p class="hero-subtitle">Convert, compress, resize, and analyze your files instantly. All processing
+                    happens securely in your browser.</p>
+            </div>
+        </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Main Tools Section -->
+    <main class="main-content" id="features">
+        <div class="container">
+            <!-- Tab Navigation -->
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="image-to-pdf">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2" />
+                        <circle cx="8.5" cy="8.5" r="1.5" />
+                        <path d="M21 15l-5-5L5 21" />
+                    </svg>
+                    Image to PDF
+                </button>
+                <button class="tab-btn" data-tab="image-to-doc">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                    </svg>
+                    Image to DOC
+                </button>
+                <button class="tab-btn" data-tab="pdf-tools">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                        <line x1="16" y1="13" x2="8" y2="13" />
+                        <line x1="16" y1="17" x2="8" y2="17" />
+                    </svg>
+                    PDF Tools
+                </button>
+                <button class="tab-btn" data-tab="pdf-summary">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                        <line x1="12" y1="17" x2="12.01" y2="17" />
+                    </svg>
+                    AI Summary
+                </button>
+                <button class="tab-btn" data-tab="image-resize">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                    </svg>
+                    Image Resize
+                </button>
+                <button class="tab-btn" data-tab="file-converter">
+                    <p class="tool-description">Upload multiple images and convert them into a single PDF document</p>
+
+                    <div class="upload-zone" id="pdf-upload-zone">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="17 8 12 3 7 8" />
+                            <line x1="12" y1="3" x2="12" y2="15" />
+                        </svg>
+                        <p>Click to upload or drag and drop</p>
+                        <span>PNG, JPG, JPEG, WebP</span>
+                        <input type="file" id="pdf-file-input" accept="image/*" multiple hidden>
+                    </div>
+
+                    <div id="pdf-preview-container" class="preview-container"></div>
+
+                    <div class="options-grid">
+                        <div class="option-group">
+                            <label for="pdf-page-size">Page Size</label>
+                            <select id="pdf-page-size" class="select-input">
+                                <option value="a4">A4</option>
+                                <option value="letter">Letter</option>
+                                <option value="legal">Legal</option>
+                            </select>
+                        </div>
+                        <div class="option-group">
+                            <label for="pdf-orientation">Orientation</label>
+                            <select id="pdf-orientation" class="select-input">
+                                <option value="portrait">Portrait</option>
+                                <option value="landscape">Landscape</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button id="convert-to-pdf-btn" class="btn-primary" disabled>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
+                        </svg>
+                        Convert to PDF
+                    </button>
+            </div>
+        </div>
+
+        <div class="tab-content" id="image-to-doc">
+            <div class="tool-card">
+                <h3 class="tool-title">Convert Images to DOC</h3>
+                <p class="tool-description">Transform your images into editable Word documents</p>
+
+                <div class="upload-zone" id="doc-upload-zone">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.5">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="17 8 12 3 7 8" />
+                        <line x1="12" y1="3" x2="12" y2="15" />
+                    </svg>
+                    <p>Click to upload or drag and drop</p>
+                    <span>PNG, JPG, JPEG, WebP</span>
+                    <input type="file" id="doc-file-input" accept="image/*" multiple hidden>
+                </div>
+
+                <div id="doc-preview-container" class="preview-container"></div>
+
+                <button id="convert-to-doc-btn" class="btn-primary" disabled>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
+                    </svg>
+                    Convert to DOC
+                </button>
+            </div>
+        </div>
+
+        <div class="tab-content" id="pdf-tools">
+            <div class="tool-card">
+                <h3 class="tool-title">PDF Tools</h3>
+                <p class="tool-description">Merge, split, and compress your PDF files</p>
+
+                <div class="pdf-tools-tabs">
+                    <button class="pdf-tool-btn active" data-tool="merge">Merge PDFs</button>
+                    <button class="pdf-tool-btn" data-tool="split">Split PDF</button>
+                    <button class="pdf-tool-btn" data-tool="compress">Compress PDF</button>
+                </div>
+
+                <!-- Merge PDFs -->
+                <div class="pdf-tool-content active" id="merge-tool">
+                    <div class="upload-zone" id="merge-upload-zone">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="17 8 12 3 7 8" />
+                            <line x1="12" y1="3" x2="12" y2="15" />
+                        </svg>
+                        <p>Upload multiple PDFs to merge</p>
+                        <span>PDF files only</span>
+                        <input type="file" id="merge-file-input" accept=".pdf" multiple hidden>
+                    </div>
+                    <div id="merge-preview-container" class="preview-container"></div>
+                    <button id="merge-pdf-btn" class="btn-primary" disabled>Merge PDFs</button>
+                </div>
+
+                <!-- Split PDF -->
+                <div class="pdf-tool-content" id="split-tool">
+                    <div class="upload-zone" id="split-upload-zone">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="17 8 12 3 7 8" />
+                            <line x1="12" y1="3" x2="12" y2="15" />
+                        </svg>
+                        <p>Upload PDF to split</p>
+                        <span>PDF files only</span>
+                        <input type="file" id="split-file-input" accept=".pdf" hidden>
+                    </div>
+                    <div id="split-options" class="options-grid" style="display: none;">
+                        <div class="option-group">
+                            <label for="split-pages">Pages to extract (e.g., 1-3, 5, 7-9)</label>
+                            <input type="text" id="split-pages" class="text-input" placeholder="1-3, 5, 7-9">
+                        </div>
+                    </div>
+                    <button id="split-pdf-btn" class="btn-primary" disabled>Split PDF</button>
+                </div>
+
+                <!-- Compress PDF -->
+                <div class="pdf-tool-content" id="compress-tool">
+                    <div class="upload-zone" id="compress-upload-zone">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="17 8 12 3 7 8" />
+                            <line x1="12" y1="3" x2="12" y2="15" />
+                        </svg>
+                        <p>Upload PDF to compress</p>
+                        <span>PDF files only</span>
+                        <input type="file" id="compress-file-input" accept=".pdf" hidden>
+                    </div>
+                    <button id="compress-pdf-btn" class="btn-primary" disabled>Compress PDF</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="pdf-summary">
+            <div class="tool-card">
+                <h3 class="tool-title">AI-Powered PDF Summary</h3>
+                <p class="tool-description">Extract text and get an intelligent summary of your PDF document</p>
+
+                <div class="upload-zone" id="summary-upload-zone">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.5">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="17 8 12 3 7 8" />
+                        <line x1="12" y1="3" x2="12" y2="15" />
+                    </svg>
+                    <p>Upload PDF to summarize</p>
+                    <span>PDF files only</span>
+                    <input type="file" id="summary-file-input" accept=".pdf" hidden>
+                </div>
+
+                <button id="summarize-pdf-btn" class="btn-primary" disabled>Generate Summary</button>
+
+                <div id="summary-result" class="summary-result"></div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="image-resize">
+            <div class="tool-card">
+                <h3 class="tool-title">Resize Images</h3>
+                <p class="tool-description">Resize images by percentage or custom dimensions</p>
+
+                <div class="upload-zone" id="resize-upload-zone">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.5">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="17 8 12 3 7 8" />
+                        <line x1="12" y1="3" x2="12" y2="15" />
+                    </svg>
+                    <p>Click to upload or drag and drop</p>
+                    <span>PNG, JPG, JPEG, WebP</span>
+                    <input type="file" id="resize-file-input" accept="image/*" hidden>
+                </div>
+
+                <div id="resize-preview-container" class="preview-container"></div>
+
+                <div class="options-grid">
+                    <div class="option-group">
+                        <label for="resize-mode">Resize Mode</label>
+                        <select id="resize-mode" class="select-input">
+                            <option value="percentage">Percentage</option>
+                            <option value="dimensions">Custom Dimensions</option>
+                        </select>
+                    </div>
+                    <div class="option-group" id="percentage-group">
+                        <label for="resize-percentage">Scale (%)</label>
+                        <input type="number" id="resize-percentage" class="text-input" value="50" min="1" max="200">
+                    </div>
+                    <div class="option-group" id="width-group" style="display: none;">
+                        <label for="resize-width">Width (px)</label>
+                        <input type="number" id="resize-width" class="text-input" min="1">
+                    </div>
+                    <div class="option-group" id="height-group" style="display: none;">
+                        <label for="resize-height">Height (px)</label>
+                        <input type="number" id="resize-height" class="text-input" min="1">
+                    </div>
+                    <div class="option-group">
+                        <label for="resize-format">Output Format</label>
+                        <select id="resize-format" class="select-input">
+                            <option value="png">PNG</option>
+                            <option value="jpeg">JPEG</option>
+                            <option value="webp">WebP</option>
+                        </select>
+                    </div>
+                    <div class="option-group">
+                        <label for="resize-quality">Quality (%)</label>
+                        <input type="number" id="resize-quality" class="text-input" value="90" min="1" max="100">
+                    </div>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="maintain-aspect" checked>
+                    <label for="maintain-aspect">Maintain aspect ratio</label>
+                </div>
+
+                <button id="resize-image-btn" class="btn-primary" disabled>Resize Image</button>
+            </div>
+        </div>
+
+        <div class="tab-content" id="file-converter">
+            <div class="tool-card">
+                <h3 class="tool-title">File Format Converter</h3>
+                <p class="tool-description">Convert between different image formats</p>
+
+                <div class="upload-zone" id="convert-upload-zone">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.5">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="17 8 12 3 7 8" />
+                        <line x1="12" y1="3" x2="12" y2="15" />
+                    </svg>
+                    <p>Click to upload or drag and drop</p>
+                    <span>PNG, JPG, JPEG, WebP, BMP</span>
+                    <input type="file" id="convert-file-input" accept="image/*" multiple hidden>
+                </div>
+
+                <div id="convert-preview-container" class="preview-container"></div>
+
+                <div class="options-grid">
+                    <div class="option-group">
+                        <label for="convert-format">Convert to</label>
+                        <select id="convert-format" class="select-input">
+                            <option value="png">PNG</option>
+                            <option value="jpeg">JPEG</option>
+                            <option value="webp">WebP</option>
+                        </select>
+                    </div>
+                    <div class="option-group">
+                        <label for="convert-quality">Quality (%)</label>
+                        <input type="number" id="convert-quality" class="text-input" value="90" min="1" max="100">
+                    </div>
+                </div>
+
+                <button id="convert-format-btn" class="btn-primary" disabled>Convert Files</button>
+            </div>
+        </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>FileForge</h4>
+                    <p>Professional file conversion tools, powered by AI. All processing happens locally in your browser
+                        for maximum privacy and security.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Features</h4>
+                    <ul>
+                        <li>Image to PDF/DOC</li>
+                        <li>PDF Tools</li>
+                        <li>AI Summarization</li>
+                        <li>Image Resize</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Privacy</h4>
+                    <p>Your files never leave your device. All conversions are processed locally in your browser.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 FileForge. Built with ❤️ for privacy-conscious users.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="pdf-tool-content" id="split-tool">
+            <div class="upload-zone" id="split-upload-zone">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="17 8 12 3 7 8" />
+                    <line x1="12" y1="3" x2="12" y2="15" />
+                </svg>
+                <p>Upload PDF to split</p>
+                <span>PDF files only</span>
+                <input type="file" id="split-file-input" accept=".pdf" hidden>
+            </div>
+            <div id="split-options" class="options-grid" style="display: none;">
+                <div class="option-group">
+                    <label for="split-pages">Pages to extract (e.g., 1-3, 5, 7-9)</label>
+                    <input type="text" id="split-pages" class="text-input" placeholder="1-3, 5, 7-9">
+                </div>
+            </div>
+            <button id="split-pdf-btn" class="btn-primary" disabled>Split PDF</button>
+        </div>
+
+        <!-- Compress PDF -->
+        <div class="pdf-tool-content" id="compress-tool">
+            <div class="upload-zone" id="compress-upload-zone">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="17 8 12 3 7 8" />
+                    <line x1="12" y1="3" x2="12" y2="15" />
+                </svg>
+                <p>Upload PDF to compress</p>
+                <span>PDF files only</span>
+                <input type="file" id="compress-file-input" accept=".pdf" hidden>
+            </div>
+            <button id="compress-pdf-btn" class="btn-primary" disabled>Compress PDF</button>
+        </div>
+    </div>
+    </div>
+
+    <div class="tab-content" id="pdf-summary">
+        <div class="tool-card">
+            <h3 class="tool-title">AI-Powered PDF Summary</h3>
+            <p class="tool-description">Extract text and get an intelligent summary of your PDF document</p>
+
+            <div class="upload-zone" id="summary-upload-zone">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="17 8 12 3 7 8" />
+                    <line x1="12" y1="3" x2="12" y2="15" />
+                </svg>
+                <p>Upload PDF to summarize</p>
+                <span>PDF files only</span>
+                <input type="file" id="summary-file-input" accept=".pdf" hidden>
+            </div>
+
+            <button id="summarize-pdf-btn" class="btn-primary" disabled>Generate Summary</button>
+
+            <div id="summary-result" class="summary-result"></div>
+        </div>
+    </div>
+
+    <div class="tab-content" id="image-resize">
+        <div class="tool-card">
+            <h3 class="tool-title">Resize Images</h3>
+            <p class="tool-description">Resize images by percentage or custom dimensions</p>
+
+            <div class="upload-zone" id="resize-upload-zone">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="17 8 12 3 7 8" />
+                    <line x1="12" y1="3" x2="12" y2="15" />
+                </svg>
+                <p>Click to upload or drag and drop</p>
+                <span>PNG, JPG, JPEG, WebP</span>
+                <input type="file" id="resize-file-input" accept="image/*" hidden>
+            </div>
+
+            <div id="resize-preview-container" class="preview-container"></div>
+
+            <div class="options-grid">
+                <div class="option-group">
+                    <label for="resize-mode">Resize Mode</label>
+                    <select id="resize-mode" class="select-input">
+                        <option value="percentage">Percentage</option>
+                        <option value="dimensions">Custom Dimensions</option>
+                    </select>
+                </div>
+                <div class="option-group" id="percentage-group">
+                    <label for="resize-percentage">Scale (%)</label>
+                    <input type="number" id="resize-percentage" class="text-input" value="50" min="1" max="200">
+                </div>
+                <div class="option-group" id="width-group" style="display: none;">
+                    <label for="resize-width">Width (px)</label>
+                    <input type="number" id="resize-width" class="text-input" min="1">
+                </div>
+                <div class="option-group" id="height-group" style="display: none;">
+                    <label for="resize-height">Height (px)</label>
+                    <input type="number" id="resize-height" class="text-input" min="1">
+                </div>
+                <div class="option-group">
+                    <label for="resize-format">Output Format</label>
+                    <select id="resize-format" class="select-input">
+                        <option value="png">PNG</option>
+                        <option value="jpeg">JPEG</option>
+                        <option value="webp">WebP</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label for="resize-quality">Quality (%)</label>
+                    <input type="number" id="resize-quality" class="text-input" value="90" min="1" max="100">
+                </div>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="maintain-aspect" checked>
+                <label for="maintain-aspect">Maintain aspect ratio</label>
+            </div>
+
+            <button id="resize-image-btn" class="btn-primary" disabled>Resize Image</button>
+        </div>
+    </div>
+
+    <div class="tab-content" id="file-converter">
+        <div class="tool-card">
+            <h3 class="tool-title">File Format Converter</h3>
+            <p class="tool-description">Convert between different image formats</p>
+
+            <div class="upload-zone" id="convert-upload-zone">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="17 8 12 3 7 8" />
+                    <line x1="12" y1="3" x2="12" y2="15" />
+                </svg>
+                <p>Click to upload or drag and drop</p>
+                <span>PNG, JPG, JPEG, WebP, BMP</span>
+                <input type="file" id="convert-file-input" accept="image/*" multiple hidden>
+            </div>
+
+            <div id="convert-preview-container" class="preview-container"></div>
+
+            <div class="options-grid">
+                <div class="option-group">
+                    <label for="convert-format">Convert to</label>
+                    <select id="convert-format" class="select-input">
+                        <option value="png">PNG</option>
+                        <option value="jpeg">JPEG</option>
+                        <option value="webp">WebP</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label for="convert-quality">Quality (%)</label>
+                    <input type="number" id="convert-quality" class="text-input" value="90" min="1" max="100">
+                </div>
+            </div>
+
+            <button id="convert-format-btn" class="btn-primary" disabled>Convert Files</button>
+        </div>
+    </div>
+    </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>FileForge</h4>
+                    <p>Professional file conversion tools, powered by AI. All processing happens locally in your browser
+                        for maximum privacy and security.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Features</h4>
+                    <ul>
+                        <li>Image to PDF/DOC</li>
+                        <li>PDF Tools</li>
+                        <li>AI Summarization</li>
+                        <li>Image Resize</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Privacy</h4>
+                    <p>Your files never leave your device. All conversions are processed locally in your browser.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 FileForge. Built with ❤️ for privacy-conscious users.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="loading-spinner"></div>
+        <p id="loading-text">Processing...</p>
+    </div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+    <script src="image-to-pdf.js"></script>
+    <script src="image-to-doc.js"></script>
+    <script src="pdf-tools.js"></script>
+    <script src="pdf-summary.js"></script>
+    <script src="image-resize.js"></script>
+    <script src="file-converter.js"></script>
+    <script src="ocr-tool.js"></script>
+    <script src="image-filters.js"></script>
+    <script src="pdf-editor.js"></script>
+    <script src="archive-tools.js"></script>
+    <script src="video-converter.js"></script>
+
+</body>
+
+</html>

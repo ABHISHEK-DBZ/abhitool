@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FileForge - 25+ Professional File Tools</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* Landing Page Specific Styles */
+        .tools-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding: 2rem 0;
+        }
+
+        .tool-showcase-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-showcase-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .tool-showcase-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary);
+        }
+
+        .tool-showcase-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .tool-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .tool-showcase-card:hover .tool-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .tool-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: white;
+        }
+
+        .tool-showcase-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .tool-showcase-desc {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .tool-category {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: var(--bg-tertiary);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tool-showcase-card {
+            animation: fadeInUp 0.6s ease backwards;
+        }
+
+        /* Staggered animation delays */
+        .tool-showcase-card:nth-child(1) {
+            animation-delay: 0.05s;
+        }
+
+        .tool-showcase-card:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .tool-showcase-card:nth-child(3) {
+            animation-delay: 0.15s;
+        }
+
+        .tool-showcase-card:nth-child(4) {
+            animation-delay: 0.2s;
+        }
+
+        .tool-showcase-card:nth-child(5) {
+            animation-delay: 0.25s;
+        }
+
+        .tool-showcase-card:nth-child(6) {
+            animation-delay: 0.3s;
+        }
+
+        .tool-showcase-card:nth-child(7) {
+            animation-delay: 0.35s;
+        }
+
+        .tool-showcase-card:nth-child(8) {
+            animation-delay: 0.4s;
+        }
+
+        .tool-showcase-card:nth-child(9) {
+            animation-delay: 0.45s;
+        }
+
+        .tool-showcase-card:nth-child(10) {
+            animation-delay: 0.5s;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                </svg>
+                FileForge
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Professional File Tools</h1>
+                <p class="hero-subtitle">25+ powerful tools. 100% free, works in your browser.</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">25+</div>
+                        <div class="stat-label">Tools</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Privacy</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">Free</div>
+                        <div class="stat-label">Forever</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="main-content">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2rem;">
+                Choose Your Tool
+            </h2>
+
+            <div class="tools-showcase" id="tools-grid">
+                <!-- Tools will be dynamically added here -->
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 FileForge. All tools process files locally in your browser.</p>
+        </div>
+    </footer>
+
+    <script>
+        const tools = [
+            // PDF Tools
+            { id: 'pdf-merge', category: 'PDF', title: 'PDF Merge/Split', desc: 'Combine multiple PDFs or split into separate files', icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z' },
+            { id: 'pdf-page-ops', category: 'PDF', title: 'PDF Page Operations', desc: 'Remove, extract, and reorder PDF pages', icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z' },
+            { id: 'pdf-page-numbers', category: 'PDF', title: 'Add Page Numbers', desc: 'Add customizable page numbers to PDFs', icon: 'M7 20l4-16m2 16l4-16M6 9h14M4 15h14' },
+            { id: 'pdf-security', category: 'PDF', title: 'PDF Security', desc: 'Password protect or unlock PDF files', icon: 'M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z' },
+            { id: 'pdf-signature', category: 'PDF', title: 'PDF Signatures', desc: 'Add digital signatures to PDF documents', icon: 'M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z' },
+            { id: 'pdf-form-filling', category: 'PDF', title: 'PDF Form Filling', desc: 'Fill interactive PDF forms', icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z' },
+            { id: 'pdf-annotations', category: 'PDF', title: 'PDF Annotations', desc: 'Draw, add shapes and text to PDFs', icon: 'M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z' },
+            { id: 'pdf-editor', category: 'PDF', title: 'PDF Editor', desc: 'Add watermarks and rotate pages', icon: 'M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z' },
+            { id: 'pdf-summary', category: 'PDF', title: 'PDF Summary (AI)', desc: 'Extract and summarize PDF content', icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z' },
+
+            // Image Tools
+            { id: 'image-crop', category: 'Image', title: 'Image Crop', desc: 'Crop images with custom aspect ratios', icon: 'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z' },
+            { id: 'image-compress', category: 'Image', title: 'Image Compression', desc: 'Reduce image file size with quality control', icon: 'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z' },
+            { id: 'background-removal', category: 'Image', title: 'Background Removal', desc: 'Remove solid color backgrounds from images', icon: 'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z' },
+            { id: 'image-resize', category: 'Image', title: 'Image Resize', desc: 'Resize images with custom dimensions', icon: 'M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4' },
+            { id: 'image-filters', category: 'Image', title: 'Image Filters', desc: 'Apply filters and adjust image properties', icon: 'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z' },
+
+            // Converters
+            { id: 'pdf-to-image', category: 'Converter', title: 'PDF to Image', desc: 'Convert PDF pages to JPG, PNG or WebP', icon: 'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z' },
+            { id: 'html-to-pdf', category: 'Converter', title: 'HTML to PDF', desc: 'Convert HTML content to PDF', icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4' },
+            { id: 'markdown-to-pdf', category: 'Converter', title: 'Markdown to PDF', desc: 'Convert Markdown to formatted PDF', icon: 'M7 20l4-16m2 16l4-16M6 9h14M4 15h14' },
+            { id: 'image-to-pdf', category: 'Converter', title: 'Image to PDF', desc: 'Convert images to PDF documents', icon: 'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z' },
+            { id: 'image-to-doc', category: 'Converter', title: 'Image to DOC', desc: 'Convert images to Word documents', icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z' },
+            { id: 'file-converter', category: 'Converter', title: 'File Format Converter', desc: 'Convert between image formats', icon: 'M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4' },
+
+            // Utilities
+            { id: 'qr-tools', category: 'Utility', title: 'QR Code Tools', desc: 'Generate and scan QR codes', icon: 'M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z' },
+            { id: 'document-scanner', category: 'Utility', title: 'Document Scanner', desc: 'Scan documents using your camera', icon: 'M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z' },
+            { id: 'ocr-tool', category: 'Utility', title: 'OCR Tool', desc: 'Extract text from images', icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z' },
+            { id: 'archive-tools', category: 'Utility', title: 'Archive Tools', desc: 'Create and extract ZIP archives', icon: 'M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4' },
+            { id: 'video-converter', category: 'Utility', title: 'Video Converter', desc: 'Convert video formats (placeholder)', icon: 'M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z' }
+        ];
+
+        const grid = document.getElementById('tools-grid');
+
+        tools.forEach(tool => {
+            const card = document.createElement('div');
+            card.className = 'tool-showcase-card';
+            card.onclick = () => window.location.href = `tool.html?id=${tool.id}`;
+
+            card.innerHTML = `
+                <span class="tool-category">${tool.category}</span>
+                <div class="tool-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="${tool.icon}"/>
+                    </svg>
+                </div>
+                <h3 class="tool-showcase-title">${tool.title}</h3>
+                <p class="tool-showcase-desc">${tool.desc}</p>
+            `;
+
+            grid.appendChild(card);
+        });
+
+        console.log('✅ FileForge Landing Page Ready!');
+    </script>
+</body>
+
+</html>
